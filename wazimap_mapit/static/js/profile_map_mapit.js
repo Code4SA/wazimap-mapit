@@ -11,8 +11,8 @@ ProfileMaps = function() {
         var geo = this.geo;
         var geo_level = geo.this.geo_level;
         var geo_code = geo.this.geo_code;
-        var mapit_type = MAPIT_LEVEL_TYPES[geo_level];
-        var mapit_simplify = MAPIT_LEVEL_SIMPLIFY[mapit_type];
+        var mapit_type = MAPIT.level_types[geo_level];
+        var mapit_simplify = MAPIT.level_codes[mapit_type];
 
         // add demarcation boundaries
         if (geo_level == 'country') {
@@ -42,7 +42,7 @@ ProfileMaps = function() {
         for (var i = 0; i < levels.length; i++) {
             var level = levels[i][0],
                 code  = levels[i][1];
-            var mapit_level = MAPIT_LEVEL_TYPES[level];
+            var mapit_level = MAPIT.level_codes[level];
 
             // For each level, add map shapes for that level, limited to within the
             // parent level (eg. wards within a municipality).
@@ -53,10 +53,10 @@ ProfileMaps = function() {
                 }
 
                 var parent = levels[i+1];
-                parent = MAPIT_LEVEL_TYPES[parent[0]] + '-' + parent[1];
+                parent = MAPIT.level_codes[parent[0]] + '-' + parent[1];
 
                 var url = '/areas/MDB-levels:' + parent + '|' + mapit_level +
-                          '.geojson?generation=1&simplify_tolerance=' + MAPIT_LEVEL_SIMPLIFY[mapit_level];
+                          '.geojson?generation=1&simplify_tolerance=' + MAPIT.level_simplify[mapit_level];
 
                 d3.json(self.mapit_url + url, function(error, geojson) {
                     if (error) return console.warn(error);

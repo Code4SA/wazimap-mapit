@@ -4,7 +4,7 @@
  */
 function MapItGeometryLoader() {
     var self = this;
-    self.mapit_url = '//mapit.code4sa.org';
+    self.mapit_url = MAPIT.url;
 
     /**
      * Fetches geometry data for a comparison view and calls the +success+
@@ -29,14 +29,14 @@ function MapItGeometryLoader() {
                 var filter_level = parts[1];
 
                 url = '/areas/MDB-levels:' +
-                      MAPIT_LEVEL_TYPES[filter_level] + '-' + code + '|' + MAPIT_LEVEL_TYPES[level];
+                      MAPIT.level_codes[filter_level] + '-' + code + '|' + MAPIT.level_codes[level];
             } else {
                 // single code
                 url = '/areas/MDB:' + code;
             }
 
             url = url + '.geojson?generation=1';
-            var simplify = MAPIT_LEVEL_SIMPLIFY[MAPIT_LEVEL_TYPES[level]];
+            var simplify = MAPIT.level_simplify[MAPIT.level_codes[level]];
             if (simplify) {
                 url = url + '&simplify_tolerance=' + simplify;
             }
@@ -75,8 +75,8 @@ function MapItGeometryLoader() {
     };
 
     this.loadGeometryForLevel = function(level, success) {
-        var url = '/areas/' + MAPIT_LEVEL_TYPES[level] + '.geojson';
-        var simplify = MAPIT_LEVEL_SIMPLIFY[MAPIT_LEVEL_TYPES[level]];
+        var url = '/areas/' + MAPIT.level_codes[level] + '.geojson';
+        var simplify = MAPIT.level_simplify[MAPIT.level_codes[level]];
         if (simplify) {
             url = url + '?simplify_tolerance=' + simplify;
         }
