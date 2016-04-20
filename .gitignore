@@ -1,0 +1,7 @@
+build/
+/dist/
+_build/
+*.egg-info/
+*.pyc
+*.csv
+.eggs/
