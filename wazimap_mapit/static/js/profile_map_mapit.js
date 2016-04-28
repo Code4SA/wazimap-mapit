@@ -11,8 +11,8 @@ ProfileMaps = function() {
         var geo = this.geo;
         var geo_level = geo.this.geo_level;
         var geo_code = geo.this.geo_code;
-        var mapit_type = MAPIT.level_types[geo_level];
-        var mapit_simplify = MAPIT.level_codes[mapit_type];
+        var mapit_type = MAPIT.level_codes[geo_level];
+        var mapit_simplify = MAPIT.level_simplify[mapit_type];
 
         // add demarcation boundaries
         if (geo_level == 'country') {
