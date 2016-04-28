@@ -87,6 +87,19 @@ function MapItGeometryLoader() {
             success({features: features});
         });
     };
+
+    this.loadGeometryForGeo = function(geo_level, geo_code, success) {
+        var mapit_type = MAPIT.level_codes[geo_level];
+        var mapit_simplify = MAPIT.level_simplify[mapit_type];
+        var url = "/area/MDB:" + geo_code + "/feature.geojson?generation=1&simplify_tolerance=" + mapit_simplify +
+                  "&type=" + mapit_type;
+
+        d3.json(this.mapit_url + url, function(error, feature) {
+          if (error) return console.warn(error);
+          self.decorateFeature(feature);
+          success(feature);
+        });
+    };
 }
 
 GeometryLoader = new MapItGeometryLoader();

@@ -18,13 +18,9 @@ ProfileMaps = function() {
         if (geo_level == 'country') {
             this.map.setView({lat: -28.4796, lng: 10.698445}, 5);
         } else {
-            // TODO: move this into maps_mapit.MapItGeometryLoader
-            d3.json(this.mapit_url + "/area/MDB:" + geo_code +
-                    ".geojson?generation=1&simplify_tolerance=" + mapit_simplify +
-                    "&type=" + mapit_type, function(error, geojson) {
-              if (error) return console.warn(error);
-
-              self.drawFocusFeature(geojson);
+            // draw this geometry
+            GeometryLoader.loadGeometryForGeo(geo_level, geo_code, function(feature) {
+                self.drawFocusFeature(feature);
             });
         }
 
