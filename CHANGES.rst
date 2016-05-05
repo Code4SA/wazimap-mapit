@@ -1,10 +1,11 @@
 Wazimap Mapit Change Log
 ==================
 
-0.3 (2016-05-05)
+0.4 (2016-05-05)
 ----------------
 
 * Use SSL mapit url
+* 0.3 was a broken release, ignore it
 
 0.2 (2016-04-28)
 ----------------
