@@ -25,7 +25,9 @@ ProfileMaps = function() {
 
         // peers
         var parents = _.keys(geo.parents);
-        self.drawSurroundingFeatures(geo_level, parents[0]);
+        if (parents.length > 0) {
+            self.drawSurroundingFeatures(geo_level, parents[0]);
+        }
 
         // every ancestor up to just before the root geo
         for (var i = 0; i < parents.length-1; i++) {
