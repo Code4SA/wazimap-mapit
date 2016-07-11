@@ -1,6 +1,11 @@
 Wazimap Mapit Change Log
 ==================
 
+0.5 (2016-07-11)
+----------------
+
+* Handle districts and metros correctly for ZA.
+
 0.4 (2016-05-05)
 ----------------
 
