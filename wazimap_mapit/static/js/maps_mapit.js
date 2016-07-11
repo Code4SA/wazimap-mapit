@@ -100,6 +100,18 @@ function MapItGeometryLoader() {
           success(feature);
         });
     };
+
+    this.loadGeometrySet = function(levelset, level, success) {
+        var url = '/areas/MDB-levels:' + levelset +
+                  '.geojson?generation=1&simplify_tolerance=' + MAPIT.level_simplify[MAPIT.level_codes[level]];
+
+        d3.json(self.mapit_url + url, function(error, geojson) {
+            if (error) return console.warn(error);
+            var features = _.values(geojson.features);
+            _.each(features, self.decorateFeature);
+            success({features: features});
+        });
+    };
 }
 
 GeometryLoader = new MapItGeometryLoader();
