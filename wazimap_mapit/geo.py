@@ -49,7 +49,7 @@ class GeoData(BaseGeoData):
         """
         Returns a list of geographies containing this point.
         """
-        resp = requests.get(SETTINGS['url'] + '/point/4326/%s,%s' % (longitude, latitude))
+        resp = requests.get(SETTINGS['url'] + '/point/4326/%s,%s?generation=1' % (longitude, latitude))
         resp.raise_for_status()
 
         geos = []

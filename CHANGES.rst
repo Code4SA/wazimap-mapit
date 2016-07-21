@@ -1,6 +1,11 @@
 Wazimap Mapit Change Log
 ==================
 
+0.5.2 (2016-07-21)
+----------------
+
+* FIX generation=1 for mapit calls
+
 0.5.1 (2016-07-11)
 ----------------
 
