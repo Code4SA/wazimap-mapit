@@ -1,6 +1,11 @@
 Wazimap Mapit Change Log
 ==================
 
+0.5.4 (2016-08-05)
+------------------
+
+* FIX simplify mapit geom to make downloads faster
+
 0.5.3 (2016-08-05)
 ------------------
 

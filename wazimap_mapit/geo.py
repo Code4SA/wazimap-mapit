@@ -32,7 +32,13 @@ class GeoData(BaseGeoData):
         with two keys, 'properties' which is a dict of properties,
         and 'shape' which is a shapely shape (may be None).
         """
-        url = SETTINGS['url'] + '/area/MDB:%s/feature.geojson?type=%s&generation=%s' % (geo_code, SETTINGS['level_codes'][geo_level], SETTINGS['generation'])
+        mapit_level = SETTINGS['level_codes'][geo_level]
+        url = SETTINGS['url'] + '/area/MDB:%s/feature.geojson?type=%s' % (geo_code, mapit_level)
+        url = url + '&generation=%s' % SETTINGS['generation']
+        simplify = SETTINGS['level_simplify'].get(mapit_level)
+        if simplify:
+            url = url + '&simplification_level=%s' % simplify
+
         resp = requests.get(url)
         if resp.status_code == 404:
             return None
